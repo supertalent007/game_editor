@@ -5,6 +5,15 @@
 #include "Materials/MaterialInstanceDynamic.h"
 #include "MoveArrows.generated.h"
 
+
+UENUM()
+enum class EArrowMode : uint8
+{
+    Move,
+    Scale,
+    Rotate
+};
+
 UCLASS()
 class TRUWORLD_API AMoveArrows : public AActor
 {
@@ -18,8 +27,8 @@ protected:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;
 
+    EArrowMode Mode = EArrowMode::Move;
 public:    
-    // Called every frame
     virtual void Tick(float DeltaTime) override;
 
     UFUNCTION() void OnCursorOver(UPrimitiveComponent* TouchedComponent);
